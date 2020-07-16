@@ -49,8 +49,8 @@ namespace DotnetCoreServer.Controllers
         {
 
             ResultBase result = new ResultBase();
-            Console.Out.WriteLine(request.UpgradeType);
-            Console.Out.WriteLine(request.UserID);
+            Console.Error.WriteLine(request.UpgradeType);
+            Console.Error.WriteLine(request.UserID);
             User user = this.userDao.GetUser(request.UserID);
             UpgradeData upgradeInfo = null;
             if("Health".Equals(request.UpgradeType)){

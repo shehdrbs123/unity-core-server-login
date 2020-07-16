@@ -21,10 +21,10 @@ namespace DotnetCoreServer.Models
         public List<UpgradeData> GetUpgradeInfo(){
             
             List<UpgradeData> list = new List<UpgradeData>();
-            Console.Out.WriteLine("연결시도 1");
+            Console.Error.WriteLine("연결시도 1");
             using (MySqlConnection conn = db.GetConnection())
             {
-                Console.Out.WriteLine("연결시도 2");
+                Console.Error.WriteLine("연결시도 2");
                 conn.Open();
                 string query = String.Format(
                     "SELECT upgrade_type, upgrade_level, upgrade_amount, upgrade_cost FROM tb_upgrade_info");
