@@ -40,17 +40,19 @@ namespace DotnetCoreServer.Controllers
 
             ResultBase result = new ResultBase();
 
+            Console.Out.WriteLine(result);
             User user = this.userDao.GetUser(request.UserID);
             UpgradeData upgradeInfo = null;
             if("Health".Equals(request.UpgradeType)){
                 upgradeInfo = this.upgradeDao.GetUpgradeInfo(request.UpgradeType, user.HealthLevel + 1);
             }else if("Damage".Equals(request.UpgradeType)){
-                upgradeInfo = this.upgradeDao.GetUpgradeInfo(request.UpgradeType, user.HealthLevel + 1);
+                upgradeInfo = this.upgradeDao.GetUpgradeInfo(request.UpgradeType, user.DamageLevel + 1);
             }else if("Defense".Equals(request.UpgradeType)){
-                upgradeInfo = this.upgradeDao.GetUpgradeInfo(request.UpgradeType, user.HealthLevel + 1);
+                upgradeInfo = this.upgradeDao.GetUpgradeInfo(request.UpgradeType, user.DefenseLevel + 1);
             }else if("Speed".Equals(request.UpgradeType)){
-                upgradeInfo = this.upgradeDao.GetUpgradeInfo(request.UpgradeType, user.HealthLevel + 1);
+                upgradeInfo = this.upgradeDao.GetUpgradeInfo(request.UpgradeType, user.SpeedLevel + 1);
             }else{
+                Console.Out.WriteLine("없는 타입입니다");
                 // 유효하지 않은 업그레이드 타입입니다.
             }
 
