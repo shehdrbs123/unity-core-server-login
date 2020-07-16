@@ -39,8 +39,8 @@ namespace DotnetCoreServer.Controllers
         {
 
             ResultBase result = new ResultBase();
-
-            Console.Out.WriteLine(result);
+            Console.Out.WriteLine(request.UpgradeType);
+            Console.Out.WriteLine(request.UserID);
             User user = this.userDao.GetUser(request.UserID);
             UpgradeData upgradeInfo = null;
             if("Health".Equals(request.UpgradeType)){
@@ -53,6 +53,9 @@ namespace DotnetCoreServer.Controllers
                 upgradeInfo = this.upgradeDao.GetUpgradeInfo(request.UpgradeType, user.SpeedLevel + 1);
             }else{
                 Console.Out.WriteLine("없는 타입입니다");
+                result.ResultCode = 6;
+                result.Message = "Not Matched Type";
+                return result;
                 // 유효하지 않은 업그레이드 타입입니다.
             }
 
