@@ -19,6 +19,16 @@ namespace DotnetCoreServer.Controllers
             this.userDao = userDao;
         }
 
+        // GET Upgrade/test
+        [HttpGet]
+        public UpgradeResult test()
+        {
+            UpgradeResult result = new UpgradeResult();
+
+            result.ResultCode = 7;
+            result.Message = "됬다";
+            return result;
+        }
         // GET Upgrade/Info
         [HttpGet]
         public UpgradeResult Info()
